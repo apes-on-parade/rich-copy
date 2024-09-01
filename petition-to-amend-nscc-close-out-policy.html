@@ -176,14 +176,26 @@ if((new URLSearchParams(location.search)).has("preview")){
 	contentElement.style.display = "block"
 	}
 
-button.addEventListener("click",()=>
-    e.preventDefault();
-	copyRich(contentElement.innerHTML, innerText(contentElement))
-	)
-icon.addEventListener("click",()=>
-    e.preventDefault();
-	copyRich(contentElement.innerHTML, innerText(contentElement))
-	)
+	button.addEventListener("click", (e) => {
+		e.preventDefault();
+		copyRich(contentElement.innerHTML, innerText(contentElement))
+		.then(function() {
+			alert("Successfully copied to clipboard! 📋");
+		}, function(err) {
+			alert("Failed to copy text: ", err);
+		});
+	});
+
+	icon.addEventListener("click", (e) => {
+		e.preventDefault();
+		copyRich(contentElement.innerHTML, innerText(contentElement))
+		.then(function() {
+			alert("Successfully copied to clipboard! 📋");
+		}, function(err) {
+			alert("Failed to copy text: ", err);
+		});
+	});
+
     </script>
 </body>
 </html>
